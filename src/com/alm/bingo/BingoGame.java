@@ -1,3 +1,5 @@
+package com.alm.bingo;
+
 class BingoGame {
     // static methods (if any)
 
