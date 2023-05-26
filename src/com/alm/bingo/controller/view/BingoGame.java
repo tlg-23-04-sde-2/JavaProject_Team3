@@ -1,4 +1,4 @@
-package com.alm.bingo.controller;
+package com.alm.bingo.controller.view;
 
 class BingoGame {
     // static methods (if any)
