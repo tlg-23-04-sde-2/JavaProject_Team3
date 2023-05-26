@@ -1,4 +1,4 @@
-package com.alm.bingo.controller;
+package com.alm.bingo.controller.view;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -29,7 +29,7 @@ public class Board {
     //TODO: create a get instance of the board
     /*                                                     */
    public TreeMap<String, List<Integer>>  getInstance() {
-       bingoCard.put("B", createRandomB(bIndex)); // make the a random number;
+       bingoCard.put("B", createRandomB(bIndex)); // make the random number;
 //       bingoCard.put("I", createRandomI(iIndex));
 //       bingoCard.put("N", createRandomN(nIndex));
 //       bingoCard.put("G", createRandomG(gIndex));

@@ -10,8 +10,6 @@ class BingoGame {
 
     }
 
-    public BingoGame() {
-    }
 
     // accessor methods
 

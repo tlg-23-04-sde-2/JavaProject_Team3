@@ -1,12 +1,10 @@
 package com.alm.bingo.controller;
 
+import com.alm.bingo.controller.view.Board;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class BoardTest {
 
