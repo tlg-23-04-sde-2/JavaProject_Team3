@@ -6,6 +6,9 @@ class BingoGame {
     // instance variables
 
     // constructors
+    public BingoGame() {
+
+    }
 
     public BingoGame() {
     }
