@@ -11,32 +11,32 @@ public class Board {
     private static final int NUM_OF_ELEMENTS = 5;
 
     /*                   BINGO    VALUES                           */
-   private final Map<String, List<Integer>> bingoCard = new LinkedHashMap<>();
+    private final Map<String, List<Integer>> bingoCard = new LinkedHashMap<>();
 
    // streams to create value fields for each column on the board
-    private List<Integer> bColumn = IntStream.rangeClosed(1,15)
+    private final List<Integer> bColumn = IntStream.rangeClosed(1,15)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> iColumn = IntStream.rangeClosed(16,30)
+    private final List<Integer> iColumn = IntStream.rangeClosed(16,30)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> nColumn = IntStream.rangeClosed(31,45)
+    private final List<Integer> nColumn = IntStream.rangeClosed(31,45)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> gColumn = IntStream.rangeClosed(46,60)
+    private final List<Integer> gColumn = IntStream.rangeClosed(46,60)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> oColumn = IntStream.rangeClosed(61,75)
+    private final List<Integer> oColumn = IntStream.rangeClosed(61,75)
             .boxed()
             .collect(Collectors.toList());
 
-    // getInstance creates a BingoBoard with random numbers in values
+    // create a BingoBoard with random numbers in values
     // B: 1-15; I: 16-30; N: 31-45; G: 46-60; O: 61-75
-   public static Map<String, List<Integer>>  createCard() {
+   public  Map<String, List<Integer>>  createCard() {
        bingoCard.put("B", createRandomSample(bColumn));
        bingoCard.put("I", createRandomSample(iColumn));
        bingoCard.put("N", createRandomSample(nColumn));
@@ -45,11 +45,19 @@ public class Board {
        return bingoCard;
    }
 
+   //creates the instance of the card
+   public static Board getInstance() {
+       Board board = new Board();
+       board.createCard();
+       return board;
+   }
+
    // constructor to prevent outside instantiation
    private Board() {
     }
 
-   //create the random number for the values field
+
+    //create the random number for the values field
    public List<Integer> createRandomSample(List<Integer> column) {
        Collections.shuffle(column, random);
        return new ArrayList<>(column.subList(0,NUM_OF_ELEMENTS));
@@ -71,6 +79,10 @@ public class Board {
             System.out.println();
         }
         System.out.println("==================");
+    }
+
+    public void update() {
+
     }
 
 } // end of class
