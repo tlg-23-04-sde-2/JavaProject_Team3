@@ -15,23 +15,23 @@ public class Board {
    private final Map<String, List<Integer>> bingoCard = new LinkedHashMap<>();
 
    // streams to create value fields for each column on the board
-    private List<Integer> bColumn = IntStream.rangeClosed(1,15)
+    private final List<Integer> bColumn = IntStream.rangeClosed(1,15)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> iColumn = IntStream.rangeClosed(16,30)
+    private final List<Integer> iColumn = IntStream.rangeClosed(16,30)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> nColumn = IntStream.rangeClosed(31,45)
+    private final List<Integer> nColumn = IntStream.rangeClosed(31,45)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> gColumn = IntStream.rangeClosed(46,60)
+    private final List<Integer> gColumn = IntStream.rangeClosed(46,60)
             .boxed()
             .collect(Collectors.toList());
 
-    private List<Integer> oColumn = IntStream.rangeClosed(61,75)
+    private final List<Integer> oColumn = IntStream.rangeClosed(61,75)
             .boxed()
             .collect(Collectors.toList());
 
