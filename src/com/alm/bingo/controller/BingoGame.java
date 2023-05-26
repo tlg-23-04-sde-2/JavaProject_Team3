@@ -1,4 +1,4 @@
-package com.alm.bingo;
+package com.alm.bingo.controller;
 
 class BingoGame {
     // static methods (if any)
@@ -6,6 +6,9 @@ class BingoGame {
     // instance variables
 
     // constructors
+
+    public BingoGame() {
+    }
 
     // accessor methods
 
