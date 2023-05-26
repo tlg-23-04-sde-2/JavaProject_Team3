@@ -19,7 +19,7 @@ class Bingo2 {
         bingoBoard.put(columnHeaders[1], columnI);
         bingoBoard.put(columnHeaders[2], columnN);
         bingoBoard.put(columnHeaders[3], columnG);
-        bingoBoard.put(columnHeaders[4], columnO);
+        //bingoBoard.put(columnHeaders[4], columnO);
 
 
         for(int i = 0; i < columnHeaders.length; i++) {
