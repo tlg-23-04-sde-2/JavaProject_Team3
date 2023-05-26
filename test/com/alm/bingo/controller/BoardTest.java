@@ -1,5 +1,6 @@
 package com.alm.bingo.controller;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class BoardTest {
@@ -13,9 +14,19 @@ public class BoardTest {
 //        System.out.println(tester);
 //    }
 
+
+    @Before
+    public void setUp() throws Exception {
+        board.createCard();
+    }
+
     @Test
-    public void test_getInstance() {
-        System.out.println(board.getInstance());
+    public void testShow() {
+        System.out.println(board.show());
+    }
+
+    @Test
+    public void welcomeTest() {
 
     }
 }
