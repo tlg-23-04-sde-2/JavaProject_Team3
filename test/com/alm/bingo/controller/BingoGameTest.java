@@ -1,4 +1,4 @@
-package com.alm.bingo;
+package com.alm.bingo.controller;
 
 import org.junit.Before;
 
