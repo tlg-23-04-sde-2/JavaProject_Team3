@@ -1,6 +1,5 @@
 package com.alm.bingo.controller;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -37,7 +36,7 @@ public class Board {
 
     // getInstance creates a BingoBoard with random numbers in values
     // B: 1-15; I: 16-30; N: 31-45; G: 46-60; O: 61-75
-   public Map<String, List<Integer>>  getInstance() {
+   public static Map<String, List<Integer>>  createCard() {
        bingoCard.put("B", createRandomSample(bColumn));
        bingoCard.put("I", createRandomSample(iColumn));
        bingoCard.put("N", createRandomSample(nColumn));
@@ -47,13 +46,31 @@ public class Board {
    }
 
    // constructor to prevent outside instantiation
-   public Board() {
+   private Board() {
     }
 
    //create the random number for the values field
    public List<Integer> createRandomSample(List<Integer> column) {
        Collections.shuffle(column, random);
        return new ArrayList<>(column.subList(0,NUM_OF_ELEMENTS));
+    }
+
+    public void show() {
+        System.out.println(" B   I   N   G   O");
+        System.out.println("==================");
+        //Iterate over the range
+        for (int i = 0; i < NUM_OF_ELEMENTS; i++) {
+            for (Map.Entry<String, List<Integer>> entry : bingoCard.entrySet()) {
+                List<Integer> values = entry.getValue(); // gets the values in each key set
+
+               // stores the value at current index if its in bounds
+                String value = (i < values.size()) ? String.valueOf(values.get(i)) : " ";
+                //print the value followed by a tab char
+                System.out.printf("%2s", value + "\t");;
+            }
+            System.out.println();
+        }
+        System.out.println("==================");
     }
 
 } // end of class
