@@ -9,26 +9,25 @@ import java.util.Scanner;
 
 public class BingoGame {
     // static methods (if any)
+    private static final int MAX_PLAYER_COUNT = 3;
+    private static final int MIN_PLAYER_COUNT = 1;
 
     // instance variables
     int players;    // number of players
     int turns;      // number of turns it took to win
     int bingoBall;  // bingoBall number to compare to board for hit or not
-
-
-    // constructors
-    public BingoGame() {
-
-    }
-
     private final Scanner scanner = new Scanner(System.in);
     private final Board bingoCard = Board.getInstance();
 
+    // constructors
+    public BingoGame() {
+    }
 
     // accessor methods
 
     // business methods
     public void execute() {
+        promptForPlayerCount();
         showCard();
         callBingoBall();
 
@@ -44,14 +43,39 @@ public class BingoGame {
         System.out.println("******** " + randomBall + " ********");
     }
 
+    private int promptForPlayerCount() throws NumberFormatException {
+        players = 1;
+
+        boolean validInput = false;
+        while (!validInput) {
+            System.out.println("Please enter player count");
+            String input = scanner.nextLine().trim();
+            try {
+                players = Integer.parseInt(input);
+                if ( MIN_PLAYER_COUNT <= players && players <= MAX_PLAYER_COUNT) {
+                    validInput = true;
+                }
+                else {
+                    System.out.println
+                            ("Please enter a valid number from: " + MIN_PLAYER_COUNT + " - " + MAX_PLAYER_COUNT);
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number");
+            }
+        }
+        return players;
+    }
 
 
     /*
      * Start the game
-     * -Create the board
-     * -Show the board
+     * prompt for player count = x
+     * -Create x board(s)
+     * -Show x board(s)
      * -Run bingoBall caller
      */
+
     // compareTo (ifAny)
     // hashCode (ifAny)
     // equals (ifAny)
