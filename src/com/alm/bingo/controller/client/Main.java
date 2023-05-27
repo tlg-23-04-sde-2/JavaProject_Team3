@@ -10,5 +10,4 @@ class Main {
         bingo.execute();
     }
 
-
 }
