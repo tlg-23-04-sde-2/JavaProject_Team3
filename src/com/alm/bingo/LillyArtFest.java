@@ -2,15 +2,247 @@ package com.alm.bingo;
 
 class LillyArtFest {
 /*
-//*********there will be 20 players  max -- so make inputs templates for "Player [1-3] is the winner!"
+//*********inputs templates for "Player [1-3] is the winner!"
     //Group said yes to delay with more art -sim animation
     // --is there a way i can have image 1 be replaced with image 2 rather than populating down a line?
+        -seems like swing (w/UI?) is closest
+
     //simulate animation of bunny looking left/right, different faces, etc.
 
 
     " B   I   N   G   O"
     "=================="
     The next ball selected is:
+
+    #    #       #     #
+   # #   #       ##   ##
+  #   #  #       # # # #
+ #     # #       #  #  #
+ ####### #       #     #
+ #     # #       #     #
+ #     # ####### #     #
+
+ ######
+ #     # #        ##    ####  #    #  ####  #    # #####
+ #     # #       #  #  #    # #   #  #    # #    #   #
+ ######  #      #    # #      ####   #    # #    #   #
+ #     # #      ###### #      #  #   #    # #    #   #
+ #     # #      #    # #    # #   #  #    # #    #   #
+ ######  ###### #    #  ####  #    #  ####   ####    #
+
+ ######
+ #     # # #    #  ####   ####
+ #     # # ##   # #    # #    #
+ ######  # # #  # #      #    #
+ #     # # #  # # #  ### #    #
+ #     # # #   ## #    # #    #
+ ######  # #    #  ####   ####
+
+ $$$$$$\  $$\       $$\      $$\
+$$  __$$\ $$ |      $$$\    $$$ |
+$$ /  $$ |$$ |      $$$$\  $$$$ |
+$$$$$$$$ |$$ |      $$\$$\$$ $$ |
+$$  __$$ |$$ |      $$ \$$$  $$ |
+$$ |  $$ |$$ |      $$ |\$  /$$ |
+$$ |  $$ |$$$$$$$$\ $$ | \_/ $$ |
+\__|  \__|\________|\__|     \__|
+
+
+
+$$$$$$$\  $$\                     $$\                             $$\
+$$  __$$\ $$ |                    $$ |                            $$ |
+$$ |  $$ |$$ | $$$$$$\   $$$$$$$\ $$ |  $$\  $$$$$$\  $$\   $$\ $$$$$$\
+$$$$$$$\ |$$ | \____$$\ $$  _____|$$ | $$  |$$  __$$\ $$ |  $$ |\_$$  _|
+$$  __$$\ $$ | $$$$$$$ |$$ /      $$$$$$  / $$ /  $$ |$$ |  $$ |  $$ |
+$$ |  $$ |$$ |$$  __$$ |$$ |      $$  _$$<  $$ |  $$ |$$ |  $$ |  $$ |$$\
+$$$$$$$  |$$ |\$$$$$$$ |\$$$$$$$\ $$ | \$$\ \$$$$$$  |\$$$$$$  |  \$$$$  |
+\_______/ \__| \_______| \_______|\__|  \__| \______/  \______/    \____/
+
+
+
+$$$$$$$\  $$\
+$$  __$$\ \__|
+$$ |  $$ |$$\ $$$$$$$\   $$$$$$\   $$$$$$\
+$$$$$$$\ |$$ |$$  __$$\ $$  __$$\ $$  __$$\
+$$  __$$\ $$ |$$ |  $$ |$$ /  $$ |$$ /  $$ |
+$$ |  $$ |$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
+$$$$$$$  |$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |
+\_______/ \__|\__|  \__| \____$$ | \______/
+                        $$\   $$ |
+                        \$$$$$$  |
+                         \______/
+
+ _______        _______
+ |_____| |      |  |  |
+ |     | |_____ |  |  |
+
+ ______         _______ _______ _     _  _____  _     _ _______
+ |_____] |      |_____| |       |____/  |     | |     |    |
+ |_____] |_____ |     | |_____  |    \_ |_____| |_____|    |
+
+ ______  _____ __   _  ______  _____
+ |_____]   |   | \  | |  ____ |     |
+ |_____] __|__ |  \_| |_____| |_____|
+
+
+
+       _     ____     ___       ___
+      dM.    `MM'     `MMb     dMM'
+     ,MMb     MM       MMM.   ,PMM
+     d'YM.    MM       M`Mb   d'MM
+    ,P `Mb    MM       M YM. ,P MM
+    d'  YM.   MM       M `Mb d' MM
+   ,P   `Mb   MM       M  YM.P  MM
+   d'    YM.  MM       M  `Mb'  MM
+  ,MMMMMMMMb  MM       M   YP   MM
+  d'      YM. MM    /  M   `'   MM
+_dM_     _dMM_MMMMMMM _M_      _MM_
+
+________  ___                  ___
+`MMMMMMMb.`MM                  `MM
+ MM    `Mb MM                   MM                           /
+ MM     MM MM    ___     ____   MM   __   _____  ___   ___  /M
+ MM    .M9 MM  6MMMMb   6MMMMb. MM   d'  6MMMMMb `MM    MM /MMMMM
+ MMMMMMM(  MM 8M'  `Mb 6M'   Mb MM  d'  6M'   `Mb MM    MM  MM
+ MM    `Mb MM     ,oMM MM    `' MM d'   MM     MM MM    MM  MM
+ MM     MM MM ,6MM9'MM MM       MMdM.   MM     MM MM    MM  MM
+ MM     MM MM MM'   MM MM       MMPYM.  MM     MM MM    MM  MM
+ MM    .M9 MM MM.  ,MM YM.   d9 MM  YM. YM.   ,M9 YM.   MM  YM.  ,
+_MMMMMMM9'_MM_`YMMM9'Yb.YMMMM9 _MM_  YM._YMMMMM9   YMMM9MM_  YMMM9
+
+________
+`MMMMMMMb. 68b
+ MM    `Mb Y89
+ MM     MM ___ ___  __     __      _____
+ MM    .M9 `MM `MM 6MMb   6MMbMMM 6MMMMMb
+ MMMMMMM(   MM  MMM9 `Mb 6M'`Mb  6M'   `Mb
+ MM    `Mb  MM  MM'   MM MM  MM  MM     MM
+ MM     MM  MM  MM    MM YM.,M9  MM     MM
+ MM     MM  MM  MM    MM  YMM9   MM     MM
+ MM    .M9  MM  MM    MM (M      YM.   ,M9
+_MMMMMMM9' _MM__MM_  _MM_ YMMMMb. YMMMMM9
+                         6M    Yb
+                         YM.   d9
+                          YMMMM9
+
+
+
+      db      `7MMF'      `7MMM.     ,MMF'
+     ;MM:       MM          MMMb    dPMM
+    ,V^MM.      MM          M YM   ,M MM
+   ,M  `MM      MM          M  Mb  M' MM
+   AbmmmqMA     MM      ,   M  YM.P'  MM
+  A'     VML    MM     ,M   M  `YM'   MM
+.AMA.   .AMMA..JMMmmmmMMM .JML. `'  .JMML.
+
+             ,,
+`7MM"""Yp, `7MM                 `7MM                          mm
+  MM    Yb   MM                   MM                          MM
+  MM    dP   MM   ,6"Yb.  ,p6"bo  MM  ,MP',pW"Wq.`7MM  `7MM mmMMmm
+  MM"""bg.   MM  8)   MM 6M'  OO  MM ;Y  6W'   `Wb MM    MM   MM
+  MM    `Y   MM   ,pm9MM 8M       MM;Mm  8M     M8 MM    MM   MM
+  MM    ,9   MM  8M   MM YM.    , MM `Mb.YA.   ,A9 MM    MM   MM
+.JMMmmmd9  .JMML.`Moo9^Yo.YMbmd'.JMML. YA.`Ybmd9'  `Mbod"YML. `Mbmo
+
+             ,,
+`7MM"""Yp,   db
+  MM    Yb
+  MM    dP `7MM  `7MMpMMMb.  .P"Ybmmm ,pW"Wq.
+  MM"""bg.   MM    MM    MM :MI  I8  6W'   `Wb
+  MM    `Y   MM    MM    MM  WmmmP"  8M     M8
+  MM    ,9   MM    MM    MM 8M       YA.   ,A9
+.JMMmmmd9  .JMML..JMML  JMML.YMMMMMb  `Ybmd9'
+                            6'     dP
+                            Ybmmmd'
+
+           ,ggg,         ,gggg,  ,ggg, ,ggg,_,ggg,
+          dP""8I        d8" "8I dP""Y8dP""Y88P""Y8b
+         dP   88        88  ,dP Yb, `88'  `88'  `88
+        dP    88     8888888P"   `"  88    88    88
+       ,8'    88        88           88    88    88
+       d88888888        88           88    88    88
+ __   ,8"     88   ,aa,_88           88    88    88
+dP"  ,8P      Y8  dP" "88P           88    88    88
+Yb,_,dP       `8b,Yb,_,d88b,,_       88    88    Y8,
+ "Y8P"         `Y8 "Y8P"  "Y88888    88    88    `Y8
+
+ ,ggggggggggg,
+dP"""88""""""Y8, ,dPYb,                       ,dPYb,                                I8
+Yb,  88      `8b IP'`Yb                       IP'`Yb                                I8
+ `"  88      ,8P I8  8I                       I8  8I                             88888888
+     88aaaad8P"  I8  8'                       I8  8bgg,                             I8
+     88""""Y8ba  I8 dP    ,gggg,gg    ,gggg,  I8 dP" "8    ,ggggg,    gg      gg    I8
+     88      `8b I8dP    dP"  "Y8I   dP"  "Yb I8d8bggP"   dP"  "Y8ggg I8      8I    I8
+     88      ,8P I8P    i8'    ,8I  i8'       I8P' "Yb,  i8'    ,8I   I8,    ,8I   ,I8,
+     88_____,d8',d8b,_ ,d8,   ,d8b,,d8,_    _,d8    `Yb,,d8,   ,d8'  ,d8b,  ,d8b, ,d88b,
+    88888888P"  8P'"Y88P"Y8888P"`Y8P""Y8888PP88P      Y8P"Y8888P"    8P'"Y88P"`Y888P""Y88
+
+ ,ggggggggggg,
+dP"""88""""""Y8,
+Yb,  88      `8b
+ `"  88      ,8P  gg
+     88aaaad8P"   ""
+     88""""Y8ba   gg    ,ggg,,ggg,     ,gggg,gg    ,ggggg,
+     88      `8b  88   ,8" "8P" "8,   dP"  "Y8I   dP"  "Y8ggg
+     88      ,8P  88   I8   8I   8I  i8'    ,8I  i8'    ,8I
+     88_____,d8'_,88,_,dP   8I   Yb,,d8,   ,d8I ,d8,   ,d8'
+    88888888P"  8P""Y88P'   8I   `Y8P"Y8888P"888P"Y8888P"
+                                           ,d8I'
+                                         ,dP'8I
+                                        ,8"  8I
+                                        I8   8I
+                                        `8, ,8I
+                                         `Y8P"
+
+      .o.       ooooo        ooo        ooooo
+     .888.      `888'        `88.       .888'
+    .8"888.      888          888b     d'888
+   .8' `888.     888          8 Y88. .P  888
+  .88ooo8888.    888          8  `888'   888
+ .8'     `888.   888       o  8    Y     888
+o88o     o8888o o888ooooood8 o8o        o888o
+
+oooooooooo.  oooo                      oooo                                  .
+`888'   `Y8b `888                      `888                                .o8
+ 888     888  888   .oooo.    .ooooo.   888  oooo   .ooooo.  oooo  oooo  .o888oo
+ 888oooo888'  888  `P  )88b  d88' `"Y8  888 .8P'   d88' `88b `888  `888    888
+ 888    `88b  888   .oP"888  888        888888.    888   888  888   888    888
+ 888    .88P  888  d8(  888  888   .o8  888 `88b.  888   888  888   888    888 .
+o888bood8P'  o888o `Y888""8o `Y8bod8P' o888o o888o `Y8bod8P'  `V88V"V8P'   "888"
+
+oooooooooo.   o8o
+`888'   `Y8b  `"'
+ 888     888 oooo  ooo. .oo.    .oooooooo  .ooooo.
+ 888oooo888' `888  `888P"Y88b  888' `88b  d88' `88b
+ 888    `88b  888   888   888  888   888  888   888
+ 888    .88P  888   888   888  `88bod8P'  888   888
+o888bood8P'  o888o o888o o888o `8oooooo.  `Y8bod8P'
+                               d"     YD
+                               "Y88888P'
+     ___       __      .___  ___.
+    /   \     |  |     |   \/   |
+   /  ^  \    |  |     |  \  /  |
+  /  /_\  \   |  |     |  |\/|  |
+ /  _____  \  |  `----.|  |  |  |
+/__/     \__\ |_______||__|  |__|
+
+.______    __          ___       ______  __  ___   ______    __    __  .___________.
+|   _  \  |  |        /   \     /      ||  |/  /  /  __  \  |  |  |  | |           |
+|  |_)  | |  |       /  ^  \   |  ,----'|  '  /  |  |  |  | |  |  |  | `---|  |----`
+|   _  <  |  |      /  /_\  \  |  |     |    <   |  |  |  | |  |  |  |     |  |
+|  |_)  | |  `----./  _____  \ |  `----.|  .  \  |  `--'  | |  `--'  |     |  |
+|______/  |_______/__/     \__\ \______||__|\__\  \______/   \______/      |__|
+
+.______    __  .__   __.   _______   ______
+|   _  \  |  | |  \ |  |  /  _____| /  __  \
+|  |_)  | |  | |   \|  | |  |  __  |  |  |  |
+|   _  <  |  | |  . `  | |  | |_ | |  |  |  |
+|  |_)  | |  | |  |\   | |  |__| | |  `--'  |
+|______/  |__| |__| \__|  \______|  \______/
+
+------------------------------------------------------------------
+
+
 
    _   _   _   _   _   _
   / \ / \ / \ / \ / \ / \
@@ -335,233 +567,7 @@ ____    __    ____  ______   .__   __.  __
 
 
 -------------------------------------------------------------
-    #    #       #     #
-   # #   #       ##   ##
-  #   #  #       # # # #
- #     # #       #  #  #
- ####### #       #     #
- #     # #       #     #
- #     # ####### #     #
 
- ######
- #     # #        ##    ####  #    #  ####  #    # #####
- #     # #       #  #  #    # #   #  #    # #    #   #
- ######  #      #    # #      ####   #    # #    #   #
- #     # #      ###### #      #  #   #    # #    #   #
- #     # #      #    # #    # #   #  #    # #    #   #
- ######  ###### #    #  ####  #    #  ####   ####    #
-
- ######
- #     # # #    #  ####   ####
- #     # # ##   # #    # #    #
- ######  # # #  # #      #    #
- #     # # #  # # #  ### #    #
- #     # # #   ## #    # #    #
- ######  # #    #  ####   ####
-
- $$$$$$\  $$\       $$\      $$\
-$$  __$$\ $$ |      $$$\    $$$ |
-$$ /  $$ |$$ |      $$$$\  $$$$ |
-$$$$$$$$ |$$ |      $$\$$\$$ $$ |
-$$  __$$ |$$ |      $$ \$$$  $$ |
-$$ |  $$ |$$ |      $$ |\$  /$$ |
-$$ |  $$ |$$$$$$$$\ $$ | \_/ $$ |
-\__|  \__|\________|\__|     \__|
-
-
-
-$$$$$$$\  $$\                     $$\                             $$\
-$$  __$$\ $$ |                    $$ |                            $$ |
-$$ |  $$ |$$ | $$$$$$\   $$$$$$$\ $$ |  $$\  $$$$$$\  $$\   $$\ $$$$$$\
-$$$$$$$\ |$$ | \____$$\ $$  _____|$$ | $$  |$$  __$$\ $$ |  $$ |\_$$  _|
-$$  __$$\ $$ | $$$$$$$ |$$ /      $$$$$$  / $$ /  $$ |$$ |  $$ |  $$ |
-$$ |  $$ |$$ |$$  __$$ |$$ |      $$  _$$<  $$ |  $$ |$$ |  $$ |  $$ |$$\
-$$$$$$$  |$$ |\$$$$$$$ |\$$$$$$$\ $$ | \$$\ \$$$$$$  |\$$$$$$  |  \$$$$  |
-\_______/ \__| \_______| \_______|\__|  \__| \______/  \______/    \____/
-
-
-
-$$$$$$$\  $$\
-$$  __$$\ \__|
-$$ |  $$ |$$\ $$$$$$$\   $$$$$$\   $$$$$$\
-$$$$$$$\ |$$ |$$  __$$\ $$  __$$\ $$  __$$\
-$$  __$$\ $$ |$$ |  $$ |$$ /  $$ |$$ /  $$ |
-$$ |  $$ |$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
-$$$$$$$  |$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$  |
-\_______/ \__|\__|  \__| \____$$ | \______/
-                        $$\   $$ |
-                        \$$$$$$  |
-                         \______/
-
- _______        _______
- |_____| |      |  |  |
- |     | |_____ |  |  |
-
- ______         _______ _______ _     _  _____  _     _ _______
- |_____] |      |_____| |       |____/  |     | |     |    |
- |_____] |_____ |     | |_____  |    \_ |_____| |_____|    |
-
- ______  _____ __   _  ______  _____
- |_____]   |   | \  | |  ____ |     |
- |_____] __|__ |  \_| |_____| |_____|
-
-
-
-       _     ____     ___       ___
-      dM.    `MM'     `MMb     dMM'
-     ,MMb     MM       MMM.   ,PMM
-     d'YM.    MM       M`Mb   d'MM
-    ,P `Mb    MM       M YM. ,P MM
-    d'  YM.   MM       M `Mb d' MM
-   ,P   `Mb   MM       M  YM.P  MM
-   d'    YM.  MM       M  `Mb'  MM
-  ,MMMMMMMMb  MM       M   YP   MM
-  d'      YM. MM    /  M   `'   MM
-_dM_     _dMM_MMMMMMM _M_      _MM_
-
-________  ___                  ___
-`MMMMMMMb.`MM                  `MM
- MM    `Mb MM                   MM                           /
- MM     MM MM    ___     ____   MM   __   _____  ___   ___  /M
- MM    .M9 MM  6MMMMb   6MMMMb. MM   d'  6MMMMMb `MM    MM /MMMMM
- MMMMMMM(  MM 8M'  `Mb 6M'   Mb MM  d'  6M'   `Mb MM    MM  MM
- MM    `Mb MM     ,oMM MM    `' MM d'   MM     MM MM    MM  MM
- MM     MM MM ,6MM9'MM MM       MMdM.   MM     MM MM    MM  MM
- MM     MM MM MM'   MM MM       MMPYM.  MM     MM MM    MM  MM
- MM    .M9 MM MM.  ,MM YM.   d9 MM  YM. YM.   ,M9 YM.   MM  YM.  ,
-_MMMMMMM9'_MM_`YMMM9'Yb.YMMMM9 _MM_  YM._YMMMMM9   YMMM9MM_  YMMM9
-
-________
-`MMMMMMMb. 68b
- MM    `Mb Y89
- MM     MM ___ ___  __     __      _____
- MM    .M9 `MM `MM 6MMb   6MMbMMM 6MMMMMb
- MMMMMMM(   MM  MMM9 `Mb 6M'`Mb  6M'   `Mb
- MM    `Mb  MM  MM'   MM MM  MM  MM     MM
- MM     MM  MM  MM    MM YM.,M9  MM     MM
- MM     MM  MM  MM    MM  YMM9   MM     MM
- MM    .M9  MM  MM    MM (M      YM.   ,M9
-_MMMMMMM9' _MM__MM_  _MM_ YMMMMb. YMMMMM9
-                         6M    Yb
-                         YM.   d9
-                          YMMMM9
-
-
-
-      db      `7MMF'      `7MMM.     ,MMF'
-     ;MM:       MM          MMMb    dPMM
-    ,V^MM.      MM          M YM   ,M MM
-   ,M  `MM      MM          M  Mb  M' MM
-   AbmmmqMA     MM      ,   M  YM.P'  MM
-  A'     VML    MM     ,M   M  `YM'   MM
-.AMA.   .AMMA..JMMmmmmMMM .JML. `'  .JMML.
-
-             ,,
-`7MM"""Yp, `7MM                 `7MM                          mm
-  MM    Yb   MM                   MM                          MM
-  MM    dP   MM   ,6"Yb.  ,p6"bo  MM  ,MP',pW"Wq.`7MM  `7MM mmMMmm
-  MM"""bg.   MM  8)   MM 6M'  OO  MM ;Y  6W'   `Wb MM    MM   MM
-  MM    `Y   MM   ,pm9MM 8M       MM;Mm  8M     M8 MM    MM   MM
-  MM    ,9   MM  8M   MM YM.    , MM `Mb.YA.   ,A9 MM    MM   MM
-.JMMmmmd9  .JMML.`Moo9^Yo.YMbmd'.JMML. YA.`Ybmd9'  `Mbod"YML. `Mbmo
-
-             ,,
-`7MM"""Yp,   db
-  MM    Yb
-  MM    dP `7MM  `7MMpMMMb.  .P"Ybmmm ,pW"Wq.
-  MM"""bg.   MM    MM    MM :MI  I8  6W'   `Wb
-  MM    `Y   MM    MM    MM  WmmmP"  8M     M8
-  MM    ,9   MM    MM    MM 8M       YA.   ,A9
-.JMMmmmd9  .JMML..JMML  JMML.YMMMMMb  `Ybmd9'
-                            6'     dP
-                            Ybmmmd'
-
-           ,ggg,         ,gggg,  ,ggg, ,ggg,_,ggg,
-          dP""8I        d8" "8I dP""Y8dP""Y88P""Y8b
-         dP   88        88  ,dP Yb, `88'  `88'  `88
-        dP    88     8888888P"   `"  88    88    88
-       ,8'    88        88           88    88    88
-       d88888888        88           88    88    88
- __   ,8"     88   ,aa,_88           88    88    88
-dP"  ,8P      Y8  dP" "88P           88    88    88
-Yb,_,dP       `8b,Yb,_,d88b,,_       88    88    Y8,
- "Y8P"         `Y8 "Y8P"  "Y88888    88    88    `Y8
-
- ,ggggggggggg,
-dP"""88""""""Y8, ,dPYb,                       ,dPYb,                                I8
-Yb,  88      `8b IP'`Yb                       IP'`Yb                                I8
- `"  88      ,8P I8  8I                       I8  8I                             88888888
-     88aaaad8P"  I8  8'                       I8  8bgg,                             I8
-     88""""Y8ba  I8 dP    ,gggg,gg    ,gggg,  I8 dP" "8    ,ggggg,    gg      gg    I8
-     88      `8b I8dP    dP"  "Y8I   dP"  "Yb I8d8bggP"   dP"  "Y8ggg I8      8I    I8
-     88      ,8P I8P    i8'    ,8I  i8'       I8P' "Yb,  i8'    ,8I   I8,    ,8I   ,I8,
-     88_____,d8',d8b,_ ,d8,   ,d8b,,d8,_    _,d8    `Yb,,d8,   ,d8'  ,d8b,  ,d8b, ,d88b,
-    88888888P"  8P'"Y88P"Y8888P"`Y8P""Y8888PP88P      Y8P"Y8888P"    8P'"Y88P"`Y888P""Y88
-
- ,ggggggggggg,
-dP"""88""""""Y8,
-Yb,  88      `8b
- `"  88      ,8P  gg
-     88aaaad8P"   ""
-     88""""Y8ba   gg    ,ggg,,ggg,     ,gggg,gg    ,ggggg,
-     88      `8b  88   ,8" "8P" "8,   dP"  "Y8I   dP"  "Y8ggg
-     88      ,8P  88   I8   8I   8I  i8'    ,8I  i8'    ,8I
-     88_____,d8'_,88,_,dP   8I   Yb,,d8,   ,d8I ,d8,   ,d8'
-    88888888P"  8P""Y88P'   8I   `Y8P"Y8888P"888P"Y8888P"
-                                           ,d8I'
-                                         ,dP'8I
-                                        ,8"  8I
-                                        I8   8I
-                                        `8, ,8I
-                                         `Y8P"
-
-      .o.       ooooo        ooo        ooooo
-     .888.      `888'        `88.       .888'
-    .8"888.      888          888b     d'888
-   .8' `888.     888          8 Y88. .P  888
-  .88ooo8888.    888          8  `888'   888
- .8'     `888.   888       o  8    Y     888
-o88o     o8888o o888ooooood8 o8o        o888o
-
-oooooooooo.  oooo                      oooo                                  .
-`888'   `Y8b `888                      `888                                .o8
- 888     888  888   .oooo.    .ooooo.   888  oooo   .ooooo.  oooo  oooo  .o888oo
- 888oooo888'  888  `P  )88b  d88' `"Y8  888 .8P'   d88' `88b `888  `888    888
- 888    `88b  888   .oP"888  888        888888.    888   888  888   888    888
- 888    .88P  888  d8(  888  888   .o8  888 `88b.  888   888  888   888    888 .
-o888bood8P'  o888o `Y888""8o `Y8bod8P' o888o o888o `Y8bod8P'  `V88V"V8P'   "888"
-
-oooooooooo.   o8o
-`888'   `Y8b  `"'
- 888     888 oooo  ooo. .oo.    .oooooooo  .ooooo.
- 888oooo888' `888  `888P"Y88b  888' `88b  d88' `88b
- 888    `88b  888   888   888  888   888  888   888
- 888    .88P  888   888   888  `88bod8P'  888   888
-o888bood8P'  o888o o888o o888o `8oooooo.  `Y8bod8P'
-                               d"     YD
-                               "Y88888P'
-     ___       __      .___  ___.
-    /   \     |  |     |   \/   |
-   /  ^  \    |  |     |  \  /  |
-  /  /_\  \   |  |     |  |\/|  |
- /  _____  \  |  `----.|  |  |  |
-/__/     \__\ |_______||__|  |__|
-
-.______    __          ___       ______  __  ___   ______    __    __  .___________.
-|   _  \  |  |        /   \     /      ||  |/  /  /  __  \  |  |  |  | |           |
-|  |_)  | |  |       /  ^  \   |  ,----'|  '  /  |  |  |  | |  |  |  | `---|  |----`
-|   _  <  |  |      /  /_\  \  |  |     |    <   |  |  |  | |  |  |  |     |  |
-|  |_)  | |  `----./  _____  \ |  `----.|  .  \  |  `--'  | |  `--'  |     |  |
-|______/  |_______/__/     \__\ \______||__|\__\  \______/   \______/      |__|
-
-.______    __  .__   __.   _______   ______
-|   _  \  |  | |  \ |  |  /  _____| /  __  \
-|  |_)  | |  | |   \|  | |  |  __  |  |  |  |
-|   _  <  |  | |  . `  | |  | |_ | |  |  |  |
-|  |_)  | |  | |  |\   | |  |__| | |  `--'  |
-|______/  |__| |__| \__|  \______|  \______/
-
-------------------------------------------------------------------
 
  ^ ^
 (O,O)
