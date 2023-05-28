@@ -17,7 +17,6 @@ public class BingoGame {
     int turns;      // number of turns it took to win
     int bingoBall;  // bingoBall number to compare to board for hit or not
     private final Scanner scanner = new Scanner(System.in);
-    private final Board bingoCard = Board.getInstance();
 
     // constructors
     public BingoGame() {
@@ -28,12 +27,21 @@ public class BingoGame {
     // business methods
     public void execute() {
         promptForPlayerCount();
-        showCard();
+        multipleBoards(players);
         callBingoBall();
 
     }
-    private void showCard() {
-        bingoCard.show();
+    private void showCard(Board board) {
+        board.show();
+    }
+
+    private void multipleBoards(int players) {
+        this.players = players;
+        for (int i = 1; i <= players; i++) {
+            System.out.println("Player: " + i);
+            Board newBoard = Board.getInstance();
+            showCard(newBoard);
+        }
     }
 
     private void callBingoBall() {
