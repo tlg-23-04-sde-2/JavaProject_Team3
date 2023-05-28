@@ -1,9 +1,9 @@
 package com.alm.bingo;
 
 class LillyArtFest {
-    //the main/sout is just for making copy/paste easier.
+    //below is a 'hack' i discovered to have IntelliJ help me format art automatically
 //    public static void main(String[] args) {
-//        System.out.println();
+//        System.out.println("");
 //    }
 
 /*
