@@ -2,11 +2,14 @@ package com.alm.bingo;
 
 class LillyArtFest {
 /*
+   IF THIS LINE STILL EXISTS, SORRY FOR MY DELAY, I HAVE BEEN TIED UP, BUT AM ALL YOURS NOW.. WELL, *VERY SOON.
+   Airport, home, my do-to desires with this project. Sorry, thank you both<3
+
+
 //*********inputs templates for "Player [1-3] is the winner!"
     //Group said yes to delay with more art -sim animation
     // --is there a way i can have image 1 be replaced with image 2 rather than populating down a line?
         -seems like swing (w/UI?) is closest
-
     //simulate animation of bunny looking left/right, different faces, etc.
 
 
