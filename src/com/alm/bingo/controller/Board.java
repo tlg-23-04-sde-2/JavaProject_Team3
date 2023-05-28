@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import com.alm.bingo.controller.view.Greeting;
 
 public class Board {
     // static variables
@@ -64,6 +65,8 @@ public class Board {
     }
 
     public void show() {
+        System.out.println();
+        System.out.println(Greeting.greeting);
         System.out.println(" B   I   N   G   O");
         System.out.println("==================");
         //Iterate over the range
