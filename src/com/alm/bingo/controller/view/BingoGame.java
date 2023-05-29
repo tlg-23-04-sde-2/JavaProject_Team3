@@ -29,10 +29,10 @@ public class BingoGame {
 
     // business methods
     public void execute() throws InterruptedException {
-        promptForPlayerCount();
-        multipleBoards(players);
         greeting.runGreeting();
         TimeUnit.SECONDS.sleep(1);
+        promptForPlayerCount();
+        multipleBoards(players);
 //        callBingoBall();
         int i = 0;
         while (i < 75) {

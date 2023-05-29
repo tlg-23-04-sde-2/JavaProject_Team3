@@ -53,7 +53,7 @@ public class Board {
    }
 
    // constructor to prevent outside instantiation
-   private Board() {
+   Board() {  //made package-private for testing BoardTest L16
     }
 
     //create the random number for the values field

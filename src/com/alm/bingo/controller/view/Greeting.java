@@ -24,6 +24,7 @@ public class Greeting implements Runnable {
         ExecutorService popUp = Executors.newFixedThreadPool(1);
         System.out.println();
         popUp.execute(greeting1);
+        TimeUnit.SECONDS.sleep(2);
         System.out.println();
         TimeUnit.SECONDS.sleep(1);
         popUp.execute(greeting2);
