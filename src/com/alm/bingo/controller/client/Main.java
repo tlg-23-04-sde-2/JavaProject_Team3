@@ -5,7 +5,7 @@ import com.alm.bingo.controller.view.BingoGame;
 
 class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         BingoGame bingo = new BingoGame();
         bingo.execute();
     }

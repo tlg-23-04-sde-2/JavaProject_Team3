@@ -2,15 +2,17 @@ package com.alm.bingo.controller.view;
 
 import com.alm.bingo.controller.BingoBall;
 import com.alm.bingo.controller.Board;
-
+import com.alm.bingo.controller.view.Greeting;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class BingoGame {
     // static methods (if any)
     private static final int MAX_PLAYER_COUNT = 3;
     private static final int MIN_PLAYER_COUNT = 1;
+    Greeting greeting = new Greeting();
 
     // instance variables
     int players;    // number of players
@@ -25,11 +27,12 @@ public class BingoGame {
     // accessor methods
 
     // business methods
-    public void execute() {
+    public void execute() throws InterruptedException {
         promptForPlayerCount();
         multipleBoards(players);
+        greeting.runGreeting();
+        TimeUnit.SECONDS.sleep(1);
         callBingoBall();
-
     }
     private void showCard(Board board) {
         board.show();
@@ -74,6 +77,7 @@ public class BingoGame {
         }
         return players;
     }
+
 
 
     /*

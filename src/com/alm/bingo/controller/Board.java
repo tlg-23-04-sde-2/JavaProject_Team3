@@ -74,7 +74,7 @@ public class Board {
                // stores the value at current index if its in bounds
                 String value = (i < values.size()) ? String.valueOf(values.get(i)) : " ";
                 //print the value followed by a tab char
-                System.out.printf("%2s", value + "\t");;
+                System.out.printf("%2s", value + "\t");
             }
             System.out.println();
         }
