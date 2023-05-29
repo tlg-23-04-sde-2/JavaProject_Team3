@@ -17,7 +17,7 @@ public class BingoGame {
     // instance variables
     int players;    // number of players
     int turns;      // number of turns it took to win
-    int bingoBall;  // bingoBall number to compare to board for hit or not
+    int bingoBall;  // bingoBall number to compare to board for hit or not // have to make this a string
     private final Scanner scanner = new Scanner(System.in);
 
     // constructors
@@ -28,17 +28,20 @@ public class BingoGame {
 
     // business methods
     public void execute() throws InterruptedException {
-        promptForPlayerCount();
-        multipleBoards(players);
         greeting.runGreeting();
         TimeUnit.SECONDS.sleep(1);
+        System.out.println();
+        System.out.println();
+        promptForPlayerCount();
+        multipleBoards(players);
         callBingoBall();
     }
+
     private void showCard(Board board) {
         board.show();
     }
 
-    private void multipleBoards(int players) {
+    public void multipleBoards(int players) {
         this.players = players;
         for (int i = 1; i <= players; i++) {
             System.out.println("Player: " + i);
@@ -54,7 +57,7 @@ public class BingoGame {
         System.out.println("******** " + randomBall + " ********");
     }
 
-    private int promptForPlayerCount() throws NumberFormatException {
+    public int promptForPlayerCount() throws NumberFormatException {
         players = 1;
 
         boolean validInput = false;
@@ -72,7 +75,8 @@ public class BingoGame {
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid number");
+                System.out.println
+                        ("Please enter a valid number from: " + MIN_PLAYER_COUNT + " - " + MAX_PLAYER_COUNT);
             }
         }
         return players;
