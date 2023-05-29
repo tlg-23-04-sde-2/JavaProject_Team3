@@ -56,7 +56,6 @@ public class Board {
    private Board() {
     }
 
-
     //create the random number for the values field
    public List<Integer> createRandomSample(List<Integer> column) {
        Collections.shuffle(column, random);
