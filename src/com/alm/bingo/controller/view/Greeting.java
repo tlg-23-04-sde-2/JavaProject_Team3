@@ -34,6 +34,39 @@ public class Greeting implements Runnable {
         popUp.shutdown();
     }
 
+    //NOTE: ATM outputs all player numbers
+    //TODO: update with only the winners player number when method built
+    public void runWinner() throws InterruptedException {
+        ExecutorService popUp = Executors.newFixedThreadPool(1);
+        System.out.println();
+        popUp.execute(winPlayer);
+        System.out.println();
+        TimeUnit.SECONDS.sleep(1);
+        popUp.execute(winP1);
+        TimeUnit.SECONDS.sleep(1);
+        popUp.execute(winP2);
+        TimeUnit.SECONDS.sleep(1);
+        popUp.execute(winP3);
+        TimeUnit.SECONDS.sleep(1);
+        popUp.execute(winWon);
+        TimeUnit.SECONDS.sleep(6);
+        popUp.execute(michaelMascot1);
+        TimeUnit.SECONDS.sleep(2);
+        popUp.execute(michaelMascot2);
+        TimeUnit.SECONDS.sleep(2);
+        popUp.execute(michaelMascot3);
+        TimeUnit.SECONDS.sleep(2);
+        popUp.execute(michaelMascot4);
+        TimeUnit.SECONDS.sleep(2);
+        popUp.execute(michaelMascot5);
+        TimeUnit.SECONDS.sleep(2);
+        popUp.execute(michaelMascot6);
+        TimeUnit.SECONDS.sleep(4);
+        popUp.execute(fireworks);
+        TimeUnit.SECONDS.sleep(8);
+        popUp.shutdown();
+    }
+
     public void run() {
         System.out.println(art);
 //        for (int i = 0; i < 1; i++) {
@@ -45,20 +78,6 @@ public class Greeting implements Runnable {
 //            }
 //        }
     }
-
-    //for later
-    //        popUp.execute(winPlayer);
-//        popUp.execute(winP1);
-//        popUp.execute(winP2);
-//        popUp.execute(winP3);
-//        popUp.execute(winWon);
-//        popUp.execute(michaelMascot1);
-//        popUp.execute(michaelMascot2);
-//        popUp.execute(michaelMascot3);
-//        popUp.execute(michaelMascot4);
-//        popUp.execute(michaelMascot5);
-//        popUp.execute(michaelMascot6);
-//        popUp.execute(fireworks);
 
     // FIELDS BELOW BC THEY ARE HUGE----------------------------------------------
     private static Runnable greeting1 = new Greeting("WELCOME TO...");
@@ -130,23 +149,23 @@ public class Greeting implements Runnable {
             " $$  /   \\$$ |   $$$$$$  |  $$ | \\$$ |  $$\\     \n" +
             " \\__/     \\__|   \\______/   \\__|  \\__|  \\__| \n");
     private static Runnable michaelMascot1 = new Greeting("(\\(\\ \n" +
-            "(-.-) \n" +
-            "o(\")(\")");
+            "(-.-)      \n" +
+            "o(\")(\")  \n");
         private static Runnable michaelMascot2 = new Greeting("(\\(\\ \n" +
-                "(-.o) \n" +
-                "o(\")(\")");
+            "(-.o)     \n" +
+            "o(\")(\") \n");
         private static Runnable michaelMascot3 = new Greeting("(\\_/) -!!\n" +
-                "(0.0)     \n" +
-                "(m m)o    \n");
+            "(0.0)     \n" +
+            "(m m)o    \n");
         private static Runnable michaelMascot4 = new Greeting("* (\\_/) \n" +
-                "(\\(O.O) \n" +
-                "  (m_m)o \n");
+            "(\\(O.O) \n" +
+            "  (m_m)o \n");
         private static Runnable michaelMascot5 = new Greeting(" (\\_/) *\n" +
-                " (O.O)/) \n" +
-                "o(m_m) \n");
-        private static Runnable michaelMascot6 = new Greeting(" (\\_/) \n" +
-                "=(^.^)= \n" +
-                "(\")_(\")");
+            " (O.O)/) \n" +
+            "o(m_m)   \n");
+        private static Runnable michaelMascot6 = new Greeting("* (\\_/) *\n" +
+            " =(^.^)=   \n" +
+            " (\")_(\") \n");
         private static Runnable fireworks = new Greeting("                                  .''.\n" +
                 "       .''.     .        *''*    :_\\/_:     .\n" +
                 "      :_\\/_:  _\\(/_  .:.*_\\/_*   : /\\ :  .'.:.'.\n" +
