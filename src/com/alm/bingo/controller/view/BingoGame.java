@@ -2,10 +2,10 @@ package com.alm.bingo.controller.view;
 
 import com.alm.bingo.controller.BingoBall;
 import com.alm.bingo.controller.Board;
+import com.alm.bingo.controller.MichaelScratch;
 import com.alm.bingo.controller.view.Greeting;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class BingoGame {
@@ -19,6 +19,7 @@ public class BingoGame {
     int turns;      // number of turns it took to win
     int bingoBall;  // bingoBall number to compare to board for hit or not
     private final Scanner scanner = new Scanner(System.in);
+    MichaelScratch ms = new MichaelScratch();
 
     // constructors
     public BingoGame() {
@@ -32,7 +33,15 @@ public class BingoGame {
         multipleBoards(players);
         greeting.runGreeting();
         TimeUnit.SECONDS.sleep(1);
-        callBingoBall();
+//        callBingoBall();
+        int i = 0;
+        while (i < 75) {
+            ms.generateRandomNumber();
+            i++;
+        }
+        List<Integer> list = new ArrayList(ms.calledNumbers);
+        Collections.sort(list);
+        System.out.println(list);
     }
     private void showCard(Board board) {
         board.show();
@@ -47,7 +56,7 @@ public class BingoGame {
         }
     }
 
-    private void callBingoBall() {
+    public void callBingoBall() {
         BingoBall randomBall = BingoBall.getRandomBall();
         int number = randomBall.getNumber();
         System.out.println("The next ball selected is:");
