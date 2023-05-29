@@ -27,13 +27,11 @@ public class BingoGame {
     // accessor methods
 
     // business methods
-    public void execute() {
+    public void execute() throws InterruptedException {
         promptForPlayerCount();
         multipleBoards(players);
-    public void execute() throws InterruptedException {
         greeting.runGreeting();
         TimeUnit.SECONDS.sleep(1);
-        showCard();
         callBingoBall();
     }
     private void showCard(Board board) {
