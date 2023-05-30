@@ -67,6 +67,14 @@ public class BingoGameTest {
     }
 
     @Test
+    public void showCard_shouldShowNewBingoCard_whenCalled() {
+        Board board = new Board();
+        board.createCard();
+        Board.getInstance();
+        board.show();
+    }
+    
+    @Test
     public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() {
         // created the bingo game
         BingoGame game = new BingoGame();
