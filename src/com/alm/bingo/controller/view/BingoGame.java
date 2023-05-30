@@ -2,11 +2,9 @@ package com.alm.bingo.controller.view;
 
 import com.alm.bingo.controller.BingoBall;
 import com.alm.bingo.controller.Board;
-import com.alm.bingo.controller.MichaelScratch;
-import com.alm.bingo.controller.view.Greeting;
+import com.alm.bingo.controller.BingoBallRandomizer;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class BingoGame {
     // static methods (if any)
@@ -19,7 +17,7 @@ public class BingoGame {
     int turns;      // number of turns it took to win
     int bingoBall;  // bingoBall number to compare to board for hit or not // have to make this a string
     private final Scanner scanner = new Scanner(System.in);
-    MichaelScratch ms = new MichaelScratch();
+    BingoBallRandomizer ms = new BingoBallRandomizer();
 
     // constructors
     public BingoGame() {

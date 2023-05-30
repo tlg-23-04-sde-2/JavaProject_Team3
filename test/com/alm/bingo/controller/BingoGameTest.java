@@ -11,11 +11,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.Set;
-
-import static org.junit.Assert.*;
-
 
 public class BingoGameTest {
     BingoGame game = new BingoGame();
@@ -49,7 +44,7 @@ public class BingoGameTest {
 //           BingoBall.getRandomBall();
 //            System.out.println(BingoBall.getRandomBall());
 //        }
-        MichaelScratch rand = new MichaelScratch();
+        BingoBallRandomizer rand = new BingoBallRandomizer();
         for(int i = 0; i < 75; i++) {
             rand.generateRandomNumber();
         }

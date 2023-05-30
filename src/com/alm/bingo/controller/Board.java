@@ -3,7 +3,6 @@ package com.alm.bingo.controller;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Board {
     // static variables
@@ -89,13 +88,13 @@ public class Board {
                 .collect(Collectors.toSet());
 
         // get the random number that was generated and adds it to a set of called numbers
-        MichaelScratch scratch = new MichaelScratch();
-        scratch.generateRandomNumber();
+        BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
+        randomizedBall.generateRandomNumber();
 
         // calling the set of called numbers;
-        Set<BingoBall> x = scratch.getCalledNumbers();
+        Set<BingoBall> calledBingoBalls = randomizedBall.getCalledNumbers();
         if (
-                x.stream()
+                calledBingoBalls.stream()
                         .map(BingoBall::getNumber)
                         .anyMatch(boardValues::contains)
         ) {

@@ -6,14 +6,14 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class MichaelScratch {
+public class BingoBallRandomizer {
     // static methods (if any)
     // instance variables
     public Set<BingoBall> calledNumbers = new HashSet<>();
     public Random random;
 
     // constructors
-    public MichaelScratch() {
+    public BingoBallRandomizer() {
         getCalledNumbers();
         random = new Random();
     }
