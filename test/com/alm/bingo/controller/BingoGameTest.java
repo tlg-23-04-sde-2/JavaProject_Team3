@@ -57,7 +57,7 @@ public class BingoGameTest {
     
 
     @Test
-    public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() {
+    public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() throws InterruptedException {
         // created the bingo game
         BingoGame game = new BingoGame();
         // initialize player count

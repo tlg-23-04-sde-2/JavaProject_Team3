@@ -5,6 +5,7 @@ import com.alm.bingo.controller.Board;
 import com.alm.bingo.controller.BingoBallRandomizer;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class BingoGame {
     // static methods (if any)
@@ -18,6 +19,7 @@ public class BingoGame {
     int bingoBall;  // bingoBall number to compare to board for hit or not // have to make this a string
     private final Scanner scanner = new Scanner(System.in);
     BingoBallRandomizer ms = new BingoBallRandomizer();
+
 
     // constructors
     public BingoGame() {
@@ -38,16 +40,19 @@ public class BingoGame {
 
 
 
+
+
 //        callBingoBall();
     }
 
-    private void showCard(Board board) {
+    private void showCard(Board board) throws InterruptedException {
         board.show();
         board.update();
+        board.show();
 
     }
 
-    public void multipleBoards(int players) {
+    public void multipleBoards(int players) throws InterruptedException {
         this.players = players;
         for (int i = 1; i <= players; i++) {
             System.out.println("Player: " + i);

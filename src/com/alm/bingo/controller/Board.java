@@ -1,6 +1,8 @@
 package com.alm.bingo.controller;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -82,26 +84,54 @@ public class Board {
 
     public void update() {
         //get values on the board
-       Set<Integer> boardValues = bingoCard.values()
+        Set<Integer> boardValues = bingoCard.values()
                 .stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet());
 
         // get the random number that was generated and adds it to a set of called numbers
         BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
-        randomizedBall.generateRandomNumber();
+        int i = 0;
+        while(i < 5) {
+            randomizedBall.generateRandomNumber();
+            i++;
 
         // calling the set of called numbers;
         Set<BingoBall> calledBingoBalls = randomizedBall.getCalledNumbers();
+        System.out.println("The next ball selected is:");
+        // TODO need to only print current ball called
+        System.out.println("******** " + calledBingoBalls + " ********");
+
+
+//        String key = "";
+//        String value = "";
+//        int intValue = Integer.parseInt(value);
+
         if (
                 calledBingoBalls.stream()
                         .map(BingoBall::getNumber)
                         .anyMatch(boardValues::contains)
+
         ) {
+            for (BingoBall matchedBall : calledBingoBalls) {
+                int numberToReplace = matchedBall.getNumber();
+                bingoCard.forEach((key, value) -> {
+                    value.replaceAll(num -> (num == numberToReplace) ? 0 : num);
+                    System.out.println(numberToReplace);
+                    System.out.println(value);
+                });
+
+//                Pattern pattern = Pattern.compile("([A-Z]+)(\\d+)");
+//                Matcher matcher = pattern.matcher(matchedBall.name());
+//                if(matcher.matches()) {
+//                    key = matcher.group(1);
+//                    value = matcher.group(2);
+//                }
+            }
+
             System.out.println("true");
+//            System.out.println(calledBingoBalls);
         }
-
-
+        }
     }
-
 } // end of class
