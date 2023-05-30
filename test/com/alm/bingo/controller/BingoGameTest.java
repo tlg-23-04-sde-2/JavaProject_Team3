@@ -60,11 +60,7 @@ public class BingoGameTest {
     public void callToBingoBall_shouldReturnValidBingoBall_whenCalled() {
 
     }
-
-    @Test
-    public void promptForPlayerCount() throws NumberFormatException {
-        // is this test needed?
-    }
+    
 
     @Test
     public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() {

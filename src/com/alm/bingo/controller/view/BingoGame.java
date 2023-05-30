@@ -29,28 +29,24 @@ public class BingoGame {
 
     // business methods
     public void execute() throws InterruptedException {
-        greeting.runGreeting();
-        TimeUnit.SECONDS.sleep(1);
-        System.out.println();
-        System.out.println();
+//        greeting.runGreeting();
+//        TimeUnit.SECONDS.sleep(1);
+//        System.out.println();
+//        System.out.println();
         promptForPlayerCount();
-        multipleBoards(players);
-        callBingoBall();
-        promptForPlayerCount();
-        multipleBoards(players);
 //        callBingoBall();
-        int i = 0;
-        while (i < 75) {
-            ms.generateRandomNumber();
-            i++;
-        }
-        List<Integer> list = new ArrayList(ms.calledNumbers);
-        Collections.sort(list);
-        System.out.println(list);
+        multipleBoards(players);
+
+
+
+
+//        callBingoBall();
     }
 
     private void showCard(Board board) {
         board.show();
+        board.update();
+
     }
 
     public void multipleBoards(int players) {
@@ -64,6 +60,7 @@ public class BingoGame {
 
     public void callBingoBall() {
         BingoBall randomBall = BingoBall.getRandomBall();
+//        String number = randomBall.getNumber();
         int number = randomBall.getNumber();
         System.out.println("The next ball selected is:");
         System.out.println("******** " + randomBall + " ********");
