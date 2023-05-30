@@ -1,5 +1,5 @@
 package com.alm.bingo.controller;
-import com.alm.bingo.controller.view.BingoGame;
+import com.alm.bingo.view.BingoGame;
 import com.alm.bingo.view.Greeting;
 import org.junit.Before;
 import org.junit.Test;
@@ -57,7 +57,7 @@ public class BingoGameTest {
     
 
     @Test
-    public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() {
+    public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() throws InterruptedException {
         // created the bingo game
         BingoGame game = new BingoGame();
         // initialize player count
