@@ -1,4 +1,4 @@
-package com.alm.bingo.controller.view;
+package com.alm.bingo.view;
 
 import com.alm.bingo.controller.BingoBall;
 import com.alm.bingo.controller.Board;
