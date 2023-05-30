@@ -1,11 +1,10 @@
-package com.alm.bingo.view;
+package com.alm.bingo.controller.view;
 
 import com.alm.bingo.controller.BingoBall;
 import com.alm.bingo.controller.Board;
-import com.alm.bingo.controller.MichaelScratch;
+import com.alm.bingo.controller.BingoBallRandomizer;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class BingoGame {
     // static methods (if any)
@@ -18,7 +17,7 @@ public class BingoGame {
     int turns;      // number of turns it took to win
     int bingoBall;  // bingoBall number to compare to board for hit or not // have to make this a string
     private final Scanner scanner = new Scanner(System.in);
-    MichaelScratch ms = new MichaelScratch();
+    BingoBallRandomizer ms = new BingoBallRandomizer();
 
     // constructors
     public BingoGame() {
@@ -28,28 +27,24 @@ public class BingoGame {
 
     // business methods
     public void execute() throws InterruptedException {
-        greeting.runGreeting();
-        TimeUnit.SECONDS.sleep(1);
-        System.out.println();
-        System.out.println();
+//        greeting.runGreeting();
+//        TimeUnit.SECONDS.sleep(1);
+//        System.out.println();
+//        System.out.println();
         promptForPlayerCount();
-        multipleBoards(players);
-        callBingoBall();
-        promptForPlayerCount();
-        multipleBoards(players);
 //        callBingoBall();
-        int i = 0;
-        while (i < 75) {
-            ms.generateRandomNumber();
-            i++;
-        }
-        List<Integer> list = new ArrayList(ms.calledNumbers);
-        Collections.sort(list);
-        System.out.println(list);
+        multipleBoards(players);
+
+
+
+
+//        callBingoBall();
     }
 
     private void showCard(Board board) {
         board.show();
+        board.update();
+
     }
 
     public void multipleBoards(int players) {
@@ -63,6 +58,7 @@ public class BingoGame {
 
     public void callBingoBall() {
         BingoBall randomBall = BingoBall.getRandomBall();
+//        String number = randomBall.getNumber();
         int number = randomBall.getNumber();
         System.out.println("The next ball selected is:");
         System.out.println("******** " + randomBall + " ********");

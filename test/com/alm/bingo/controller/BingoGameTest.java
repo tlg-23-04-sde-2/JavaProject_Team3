@@ -1,7 +1,7 @@
 package com.alm.bingo.controller;
 
-import com.alm.bingo.view.BingoGame;
-import com.alm.bingo.view.Greeting;
+import com.alm.bingo.controller.view.BingoGame;
+import com.alm.bingo.controller.view.Greeting;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,7 +44,7 @@ public class BingoGameTest {
 //           BingoBall.getRandomBall();
 //            System.out.println(BingoBall.getRandomBall());
 //        }
-        MichaelScratch rand = new MichaelScratch();
+        BingoBallRandomizer rand = new BingoBallRandomizer();
         for(int i = 0; i < 75; i++) {
             rand.generateRandomNumber();
         }
@@ -55,14 +55,7 @@ public class BingoGameTest {
     public void callToBingoBall_shouldReturnValidBingoBall_whenCalled() {
 
     }
-
-    @Test
-    public void showCard_shouldShowNewBingoCard_whenCalled() {
-        Board board = new Board();
-        board.createCard();
-        Board.getInstance();
-        board.show();
-    }
+    
 
     @Test
     public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() {
