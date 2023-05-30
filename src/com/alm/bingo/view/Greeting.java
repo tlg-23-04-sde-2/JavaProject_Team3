@@ -1,4 +1,4 @@
-package com.alm.bingo.controller.view;
+package com.alm.bingo.view;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
