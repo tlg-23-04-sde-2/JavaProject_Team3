@@ -1,9 +1,8 @@
-package com.alm.bingo.controller.view;
+package com.alm.bingo.view;
 
 import com.alm.bingo.controller.BingoBall;
 import com.alm.bingo.controller.Board;
 import com.alm.bingo.controller.MichaelScratch;
-import com.alm.bingo.controller.view.Greeting;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;

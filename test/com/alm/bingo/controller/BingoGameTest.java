@@ -1,7 +1,7 @@
 package com.alm.bingo.controller;
 
-import com.alm.bingo.controller.view.BingoGame;
-import com.alm.bingo.controller.view.Greeting;
+import com.alm.bingo.view.BingoGame;
+import com.alm.bingo.view.Greeting;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,11 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.Set;
-
-import static org.junit.Assert.*;
 
 
 public class BingoGameTest {
@@ -62,18 +57,13 @@ public class BingoGameTest {
     }
 
     @Test
-    public void promptForPlayerCount() throws NumberFormatException {
-        // is this test needed?
-    }
-
-    @Test
     public void showCard_shouldShowNewBingoCard_whenCalled() {
         Board board = new Board();
         board.createCard();
         Board.getInstance();
         board.show();
     }
-    
+
     @Test
     public void test_multipleBoardsShouldReturnMoreThanOneBoard_whenInputIsGreaterThanOne() {
         // created the bingo game
