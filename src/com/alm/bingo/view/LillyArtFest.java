@@ -1,4 +1,4 @@
-package com.alm.bingo;
+package com.alm.bingo.view;
 
 class LillyArtFest {
     //below is a 'hack' i discovered to have IntelliJ help me format art automatically
