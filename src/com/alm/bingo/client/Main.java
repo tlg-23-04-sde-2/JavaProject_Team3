@@ -8,5 +8,6 @@ class Main {
     public static void main(String[] args) throws InterruptedException {
         BingoGame bingo = new BingoGame();
         bingo.execute();
+        bingo.start();
     }
 }

@@ -5,23 +5,19 @@ import java.util.stream.Collectors;
 
 public class BingoBallRandomizer implements Iterable<BingoBall> {
 
-    private final List<BingoBall> balls;
-    // static methods (if any)
     // instance variables
     private final Set<BingoBall> calledNumbers;
-//    public final Random random;
+    private final List<BingoBall> balls;
 
     // constructors
     public BingoBallRandomizer(Random random) {
-//        this.random = random;
-        balls = Arrays.stream (BingoBall.values())
+        balls = Arrays.stream(BingoBall.values())
                 .collect(Collectors.toList());
-        Collections.shuffle(balls,random);
+        Collections.shuffle(balls, random);
         calledNumbers = new LinkedHashSet<>();
-//        getCalledNumbers();
     }
-    // accessor methods
 
+    // accessor methods
     public Set<BingoBall> getCalledNumbers() {
         return calledNumbers;
     }
@@ -31,25 +27,10 @@ public class BingoBallRandomizer implements Iterable<BingoBall> {
         return new BallIterator();
     }
 
-    // business methods
-//    public BingoBall generateRandomNumber() {
-//        // Generate a random number until it's a number that hasn't been called
-//        while (true) {
-//            BingoBall number = getRandomNumber();
-//            if (!calledNumbers.contains(number)) {
-//                calledNumbers.add(number);
-//                return number;
-//            }
-//        }
-//    }
-//
-//    private BingoBall getRandomNumber() {
-//
-//        // Get a random number from the BingoBall enum
-//        return BingoBall.values()[random.nextInt(BingoBall.values().length)];
-//    }
+    // nested class
     private class BallIterator implements Iterator<BingoBall> {
         private final Iterator<BingoBall> iter = balls.iterator();
+
         @Override
         public boolean hasNext() {
             return iter.hasNext();
