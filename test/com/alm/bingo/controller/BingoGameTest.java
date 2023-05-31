@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,18 +37,12 @@ public class BingoGameTest {
 
     @Test
     public void bingoBallReturn_shouldReturnMultipleBingoBalls_whenExecuteRuns() throws InterruptedException {
-//        BingoGame game = new BingoGame();
-//        BingoBall ball = BingoBall.getRandomBall();
-//        String cardHit = "I23";
-//        while (ball.equals("I23"){
-//           BingoBall.getRandomBall();
-//            System.out.println(BingoBall.getRandomBall());
-//        }
-        BingoBallRandomizer rand = new BingoBallRandomizer();
-        for(int i = 0; i < 75; i++) {
-            rand.generateRandomNumber();
+        BingoBallRandomizer rand = new BingoBallRandomizer(new SecureRandom());
+        for( BingoBall ball : rand ) {
+
         }
-        System.out.println(rand.calledNumbers.size());
+        System.out.println(rand.getCalledNumbers());
+        System.out.println(rand.getCalledNumbers().size());
     }
 
     @Test  // Lilly note: is this made redundant by the above test? i.e '...MultipleValidBingoBalls...'

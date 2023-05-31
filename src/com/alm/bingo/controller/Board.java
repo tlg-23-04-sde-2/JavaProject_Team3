@@ -9,9 +9,10 @@ public class Board {
     private static final Random random = new Random();
     private static final int NUM_OF_ELEMENTS = 5;
 
+
     /*                   BINGO    VALUES                           */
     private final Map<String, List<Integer>> bingoCard = new LinkedHashMap<>();
-    BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
+    BingoBallRandomizer randomizedBall = new BingoBallRandomizer(random);
 
     // streams to create value fields for each column on the board
     private final List<Integer> bColumn = IntStream.rangeClosed(1, 15)
@@ -47,14 +48,15 @@ public class Board {
 
     //creates the instance of the card
     public static Board getInstance() {
-            Board board = new Board();
-            board.createCard();
-            return board;
+        Board board = new Board();
+        board.createCard();
+        return board;
     }
 
     // constructor to prevent outside instantiation
     private Board() {  //made package-private for testing BoardTest L16
     }
+
 
     //create the random number for the values field
     public List<Integer> createRandomSample(List<Integer> column) {
@@ -81,56 +83,55 @@ public class Board {
     }
 
     public BingoBall randomBallGenerator() {
-        return randomizedBall.generateRandomNumber();
+        return null;
     }
 
-    public void match() {
-        //get values on the board
-        Set<Integer> boardValues = bingoCard.values()
-                .stream()
-                .flatMap(Collection::stream)
-                .collect(Collectors.toSet());
-        Set<BingoBall> calledNumbers = randomizedBall.getCalledNumbers();
+    public void match(BingoBall ball) {
+        int numberToReplace = ball.getNumber();
+        bingoCard.forEach((key, value) -> {
+            value.replaceAll(num -> (num == numberToReplace) ? 0 : num);
+        });
 
-        while (!win()) {
-            BingoBall randomBall = randomBallGenerator();
-            System.out.println("The next ball selected is:");
-            System.out.println("******** " + randomBall + " ********");
+//        //get values on the board
+//        Set<Integer> boardValues = bingoCard.values()
+//                .stream()
+//                .flatMap(Collection::stream)
+//                .collect(Collectors.toSet());
+//        Set<BingoBall> calledNumbers = randomizedBall.getCalledNumbers();
 
-            // add the random ball to the set
-            calledNumbers.add(randomBall);
 
-            if (
-                    calledNumbers.stream()
-                            .map(BingoBall::getNumber)
-                            .anyMatch(boardValues::contains)
-
-            ) {
-                for (BingoBall matchedBall : calledNumbers) {
-                    int numberToReplace = matchedBall.getNumber();
-                    bingoCard.forEach((key, value) -> {
-                        value.replaceAll(num -> (num == numberToReplace) ? 0 : num);
-                    });
-                }
+//        while (!win()) {
+//            BingoBall randomBall = randomBallGenerator();
+//            System.out.println("The next ball selected is:");
+//            System.out.println("******** " + randomBall + " ********");
+//
+//            // add the random ball to the set
+//            calledNumbers.add(randomBall);
+//
+//            if (
+//                    calledNumbers.stream()
+//                            .map(BingoBall::getNumber)
+//                            .anyMatch(boardValues::contains)
+//
+//            ) {
+//                for (BingoBall matchedBall : calledNumbers) {
+//                    int numberToReplace = matchedBall.getNumber();
+//                    bingoCard.forEach((key, value) -> {
+//                        value.replaceAll(num -> (num == numberToReplace) ? 0 : num);
+//                    });
+//                }
 
 //                show();
-            }
-        }
     }
 
     public boolean win() {
-        boolean winner = false;
         // if the whole board is 0 then that is the winner
-        boolean allValuesZero = bingoCard.values().stream()
+        return bingoCard.values().stream()
                 .allMatch((list) -> list.stream().
                         allMatch(num -> num == 0));
-        if (allValuesZero) {
-            winner = true;
-        }
-
-        return winner;
     }
-    public void update() {
-        match();
+
+    public void update(BingoBall ball) {
+        match(ball);
     }
 } // end of class
