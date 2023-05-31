@@ -4,9 +4,16 @@ import com.alm.bingo.controller.BingoBall;
 import com.alm.bingo.controller.BingoBallRandomizer;
 import com.alm.bingo.controller.Board;
 
+import java.security.SecureRandom;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BingoGame extends Thread {
     // static methods (if any)
@@ -19,8 +26,8 @@ public class BingoGame extends Thread {
     int turns;      // number of turns it took to win
     int bingoBall;  // bingoBall number to compare to board for hit or not // have to make this a string
     private final Scanner scanner = new Scanner(System.in);
-    BingoBallRandomizer ms = new BingoBallRandomizer();
-    Map<Integer, Board> test = new TreeMap<>();
+    BingoBallRandomizer ms = new BingoBallRandomizer(new SecureRandom());
+    Map<Integer, Board> test = new LinkedHashMap<>();
 
 
     // constructors
@@ -42,8 +49,8 @@ public class BingoGame extends Thread {
     }
 
     private void showCard(Board board) throws InterruptedException {
-        board.show();
-        board.update();
+//        board.show();
+//        board.update();
 //        if(board.win()) {
 //            greeting.runWinner();
 //        }
@@ -52,23 +59,60 @@ public class BingoGame extends Thread {
 
     public void run() {
         long interval = 500;
+        test = IntStream.rangeClosed(1,players)
+                .boxed()
+                .collect(Collectors.toMap(Function.identity(),(i)-> Board.getInstance()));
+        boolean blackout = false;
 
-        try {
-            multipleBoards(players);
-            Thread.sleep(interval);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for(BingoBall ball : ms) {
+            System.out.println("The next ball selected is:");
+            System.out.println("******** " + ball + " ********");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            for(Map.Entry<Integer,Board> entry : test.entrySet()) {
+                entry.getValue().update(ball);
+                entry.getValue().show();
+                if (entry.getValue().win()) {
+                    blackout = true;
+                }
+            }
+            if (blackout) {
+                break;
+            }
         }
+//        ExecutorService executor = Executors.newFixedThreadPool(players);
+//
+//
+//        for (int i = 1; i <=players; i++) {
+//            int playerId = i;
+//            executor.execute(() ->{
+//                try {
+//                    System.out.println("Player: " +playerId);
+//                    Board newBoard = Board.getInstance();
+////                    test.put(playerId, newBoard);
+//                    showCard(newBoard);
+////                    multipleBoards(players);
+////                    Thread.sleep(interval);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//        }
+//            executor.shutdown();
     }
 
     public void multipleBoards(int players) throws InterruptedException {
         this.players = players;
-        for (int i = 1; i <= players; i++) {
-            System.out.println("Player: " + i);
-            Board newBoard = Board.getInstance();
-            test.put(i, newBoard);
-            showCard(newBoard);
-        }
+            for (int i = 1; i <= players; i++) {
+                System.out.println("Player: " + i);
+                Board newBoard = Board.getInstance();
+                test.put(i, newBoard);
+                showCard(newBoard);
+
+            }
     }
 
     public void callBingoBall() {
