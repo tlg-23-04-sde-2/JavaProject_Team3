@@ -8,63 +8,48 @@ import java.security.SecureRandom;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BingoGame extends Thread {
-    // static methods (if any)
+    // static methods
     private static final int MAX_PLAYER_COUNT = 3;
     private static final int MIN_PLAYER_COUNT = 1;
-    Greeting greeting = new Greeting();
 
     // instance variables
-    int players;    // number of players
-    int turns;      // number of turns it took to win
-    int bingoBall;  // bingoBall number to compare to board for hit or not // have to make this a string
+    int players;
+    int winnerPlayerNumber;
     private final Scanner scanner = new Scanner(System.in);
-    BingoBallRandomizer ms = new BingoBallRandomizer(new SecureRandom());
-    Map<Integer, Board> test = new LinkedHashMap<>();
-
+    private final DisplayMessages displayArt = new DisplayMessages();
+    BingoBallRandomizer ballRandomizer = new BingoBallRandomizer(new SecureRandom());
+    Map<Integer, Board> playerBoards = new LinkedHashMap<>();
 
     // constructors
     public BingoGame() {
     }
 
-    // accessor methods
-
     // business methods
     public void execute() throws InterruptedException {
-//        greeting.runGreeting();
-//        TimeUnit.SECONDS.sleep(1);
-//        System.out.println();
-//        System.out.println();
+        displayArt.runGreeting();
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println();
+        System.out.println();
         promptForPlayerCount();
-        run();
-
-        System.out.println(test);
-    }
-
-    private void showCard(Board board) throws InterruptedException {
-//        board.show();
-//        board.update();
-//        if(board.win()) {
-//            greeting.runWinner();
-//        }
-
     }
 
     public void run() {
-        long interval = 500;
-        test = IntStream.rangeClosed(1,players)
+        // create the boards for each player collected into the linked hash map
+        playerBoards = IntStream.rangeClosed(1, players)
                 .boxed()
-                .collect(Collectors.toMap(Function.identity(),(i)-> Board.getInstance()));
+                .collect(Collectors.toMap(Function.identity(), (i) -> Board.getInstance()));
+
+        // setting initial win condition to false
         boolean blackout = false;
 
-        for(BingoBall ball : ms) {
+        // calls the bingo ball and displays it
+        for (BingoBall ball : ballRandomizer) {
             System.out.println("The next ball selected is:");
             System.out.println("******** " + ball + " ********");
             try {
@@ -72,61 +57,34 @@ public class BingoGame extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for(Map.Entry<Integer,Board> entry : test.entrySet()) {
+            // compares the ball called to the board and updates if they match then shows the board again
+            for (Map.Entry<Integer, Board> entry : playerBoards.entrySet()) {
+                System.out.println("Player: " + entry.getKey());
                 entry.getValue().update(ball);
                 entry.getValue().show();
+                // if the board is all zeros then that player wins
                 if (entry.getValue().win()) {
+                    winnerPlayerNumber = entry.getKey();
                     blackout = true;
                 }
             }
+            // shows the winner art
             if (blackout) {
+                try {
+                    displayArt.runWinner(winnerPlayerNumber);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             }
         }
-//        ExecutorService executor = Executors.newFixedThreadPool(players);
-//
-//
-//        for (int i = 1; i <=players; i++) {
-//            int playerId = i;
-//            executor.execute(() ->{
-//                try {
-//                    System.out.println("Player: " +playerId);
-//                    Board newBoard = Board.getInstance();
-////                    test.put(playerId, newBoard);
-//                    showCard(newBoard);
-////                    multipleBoards(players);
-////                    Thread.sleep(interval);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            });
-//        }
-//            executor.shutdown();
-    }
-
-    public void multipleBoards(int players) throws InterruptedException {
-        this.players = players;
-            for (int i = 1; i <= players; i++) {
-                System.out.println("Player: " + i);
-                Board newBoard = Board.getInstance();
-                test.put(i, newBoard);
-                showCard(newBoard);
-
-            }
-    }
-
-    public void callBingoBall() {
-        BingoBall randomBall = BingoBall.getRandomBall();
-//        String number = randomBall.getNumber();
-        int number = randomBall.getNumber();
-        System.out.println("The next ball selected is:");
-        System.out.println("******** " + randomBall + " ********");
     }
 
     public int promptForPlayerCount() throws NumberFormatException {
         players = 1;
 
         boolean validInput = false;
+        // loops to ensure that user input is valid
         while (!validInput) {
             System.out.println("Please enter player count");
             String input = scanner.nextLine().trim();
@@ -146,19 +104,4 @@ public class BingoGame extends Thread {
         }
         return players;
     }
-
-    /*
-     * Start the game
-     * prompt for player count = x
-     * -Create x board(s)
-     * -Show x board(s)
-     * -Run bingoBall caller
-     */
-
-    // compareTo (ifAny)
-    // hashCode (ifAny)
-    // equals (ifAny)
-
-    // toString
-
 }   // END OF CLASS
