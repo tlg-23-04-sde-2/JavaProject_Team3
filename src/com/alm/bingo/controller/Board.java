@@ -47,9 +47,9 @@ public class Board {
 
     //creates the instance of the card
     public static Board getInstance() {
-        Board board = new Board();
-        board.createCard();
-        return board;
+            Board board = new Board();
+            board.createCard();
+            return board;
     }
 
     // constructor to prevent outside instantiation
