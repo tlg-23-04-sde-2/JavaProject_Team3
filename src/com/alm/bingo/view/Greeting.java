@@ -35,12 +35,17 @@ public class Greeting implements Runnable {
         popUp.execute(winPlayer);
         System.out.println();
         TimeUnit.SECONDS.sleep(1);
+        //switch on player #
+        //switch case 1:
         popUp.execute(winP1);
         TimeUnit.SECONDS.sleep(1);
+        //switch case 2:
         popUp.execute(winP2);
         TimeUnit.SECONDS.sleep(1);
+        //switch case 3:
         popUp.execute(winP3);
         TimeUnit.SECONDS.sleep(1);
+
         popUp.execute(winWon);
         TimeUnit.SECONDS.sleep(6);
         popUp.execute(michaelMascot1);

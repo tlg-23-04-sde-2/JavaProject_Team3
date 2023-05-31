@@ -34,11 +34,7 @@ public class BingoGame {
 //        System.out.println();
 //        System.out.println();
         promptForPlayerCount();
-//        callBingoBall();
         multipleBoards(players);
-//        callBingoBall();
-
-
     }
 
     private void showCard(Board board) throws InterruptedException {

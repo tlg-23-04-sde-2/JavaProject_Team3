@@ -8,12 +8,11 @@ public class BingoBallRandomizer {
     // static methods (if any)
     // instance variables
     public Set<BingoBall> calledNumbers = new HashSet<>();
-    public Random random;
+    public Random random = new Random();
 
     // constructors
     public BingoBallRandomizer() {
         getCalledNumbers();
-        random = new Random();
     }
     // accessor methods
 
