@@ -11,7 +11,9 @@ public class Board {
 
     /*                   BINGO    VALUES                           */
     private final Map<String, List<Integer>> bingoCard = new LinkedHashMap<>();
-    public Set<BingoBall> calledNumbers = new HashSet<>();
+//    public Set<BingoBall> calledNumbers;
+    BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
+
 
     // streams to create value fields for each column on the board
     private final List<Integer> bColumn = IntStream.rangeClosed(1, 15)
@@ -44,6 +46,9 @@ public class Board {
         bingoCard.put("O", createRandomSample(oColumn));
         return bingoCard;
     }
+
+    //creates the instance of the card
+
 
     //creates the instance of the card
     public static Board getInstance() {
@@ -81,7 +86,6 @@ public class Board {
     }
 
     public BingoBall randomBallGenerator() {
-        BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
         return randomizedBall.generateRandomNumber();
     }
 
@@ -91,6 +95,7 @@ public class Board {
                 .stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet());
+        Set<BingoBall> calledNumbers = randomizedBall.getCalledNumbers();
 
         while (!win()) {
             BingoBall randomBall = randomBallGenerator();
