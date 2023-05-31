@@ -36,19 +36,17 @@ public class BingoGame {
         promptForPlayerCount();
 //        callBingoBall();
         multipleBoards(players);
-
-
-
-
-
-
 //        callBingoBall();
+
+
     }
 
     private void showCard(Board board) throws InterruptedException {
         board.show();
         board.update();
-        board.show();
+        if(board.win()) {
+            greeting.runWinner();
+        }
 
     }
 
