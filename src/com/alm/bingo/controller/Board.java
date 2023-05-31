@@ -1,8 +1,6 @@
 package com.alm.bingo.controller;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -13,6 +11,7 @@ public class Board {
 
     /*                   BINGO    VALUES                           */
     private final Map<String, List<Integer>> bingoCard = new LinkedHashMap<>();
+    public Set<BingoBall> calledNumbers = new HashSet<>();
 
     // streams to create value fields for each column on the board
     private final List<Integer> bColumn = IntStream.rangeClosed(1, 15)
@@ -81,57 +80,57 @@ public class Board {
         System.out.println("==================");
     }
 
+    public BingoBall randomBallGenerator() {
+        BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
+        return randomizedBall.generateRandomNumber();
+    }
 
-    public void update() {
+    public void match() {
         //get values on the board
         Set<Integer> boardValues = bingoCard.values()
                 .stream()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet());
 
-        // get the random number that was generated and adds it to a set of called numbers
-        BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
-        int i = 0;
-        while(i < 5) {
-            randomizedBall.generateRandomNumber();
-            i++;
+        while (!win()) {
+            BingoBall randomBall = randomBallGenerator();
+            System.out.println("The next ball selected is:");
+            System.out.println("******** " + randomBall + " ********");
 
-        // calling the set of called numbers;
-        Set<BingoBall> calledBingoBalls = randomizedBall.getCalledNumbers();
-        System.out.println("The next ball selected is:");
-        // TODO need to only print current ball called
-        System.out.println("******** " + calledBingoBalls + " ********");
+            // add the random ball to the set
+            calledNumbers.add(randomBall);
 
+            if (
+                    calledNumbers.stream()
+                            .map(BingoBall::getNumber)
+                            .anyMatch(boardValues::contains)
 
-//        String key = "";
-//        String value = "";
-//        int intValue = Integer.parseInt(value);
+            ) {
+                for (BingoBall matchedBall : calledNumbers) {
+                    int numberToReplace = matchedBall.getNumber();
+                    bingoCard.forEach((key, value) -> {
+                        value.replaceAll(num -> (num == numberToReplace) ? 0 : num);
+                    });
+                }
 
-        if (
-                calledBingoBalls.stream()
-                        .map(BingoBall::getNumber)
-                        .anyMatch(boardValues::contains)
-
-        ) {
-            for (BingoBall matchedBall : calledBingoBalls) {
-                int numberToReplace = matchedBall.getNumber();
-                bingoCard.forEach((key, value) -> {
-                    value.replaceAll(num -> (num == numberToReplace) ? 0 : num);
-                    System.out.println(numberToReplace);
-                    System.out.println(value);
-                });
-
-//                Pattern pattern = Pattern.compile("([A-Z]+)(\\d+)");
-//                Matcher matcher = pattern.matcher(matchedBall.name());
-//                if(matcher.matches()) {
-//                    key = matcher.group(1);
-//                    value = matcher.group(2);
-//                }
+                show();
             }
+        }
+    }
 
-            System.out.println("true");
-//            System.out.println(calledBingoBalls);
+    public boolean win() {
+        boolean winner = false;
+        // if the whole board is 0 then that is the winner
+        boolean allValuesZero = bingoCard.values().stream()
+                .allMatch((list) -> list.stream().
+                        allMatch(num -> num == 0));
+        if (allValuesZero) {
+            winner = true;
         }
-        }
+
+        return winner;
+    }
+    public void update() {
+        match();
     }
 } // end of class

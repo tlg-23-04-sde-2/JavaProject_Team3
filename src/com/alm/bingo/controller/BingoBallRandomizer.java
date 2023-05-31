@@ -1,10 +1,8 @@
 package com.alm.bingo.controller;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class BingoBallRandomizer {
     // static methods (if any)
@@ -32,7 +30,7 @@ public class BingoBallRandomizer {
         // Generate a random number until it's a number that hasn't been called
         while (true) {
             BingoBall number = getRandomNumber();
-            if(!calledNumbers.contains(number)) {
+            if (!calledNumbers.contains(number)) {
                 calledNumbers.add(number);
                 return number;
             }
