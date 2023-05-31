@@ -11,9 +11,7 @@ public class Board {
 
     /*                   BINGO    VALUES                           */
     private final Map<String, List<Integer>> bingoCard = new LinkedHashMap<>();
-//    public Set<BingoBall> calledNumbers;
     BingoBallRandomizer randomizedBall = new BingoBallRandomizer();
-
 
     // streams to create value fields for each column on the board
     private final List<Integer> bColumn = IntStream.rangeClosed(1, 15)
@@ -48,9 +46,6 @@ public class Board {
     }
 
     //creates the instance of the card
-
-
-    //creates the instance of the card
     public static Board getInstance() {
             Board board = new Board();
             board.createCard();
@@ -58,7 +53,7 @@ public class Board {
     }
 
     // constructor to prevent outside instantiation
-    Board() {  //made package-private for testing BoardTest L16
+    private Board() {  //made package-private for testing BoardTest L16
     }
 
     //create the random number for the values field
@@ -118,7 +113,7 @@ public class Board {
                     });
                 }
 
-                show();
+//                show();
             }
         }
     }
